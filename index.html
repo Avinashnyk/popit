@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Balloon Pop Game - Fun & Addictive Arcade Game</title>
+  <meta name="description" content="Play Balloon Pop, an exciting arcade game with challenging levels and fun gameplay. Play now!">
+  <meta name="keywords" content="Balloon Pop, online games, arcade game, play free games, gaming website">
+  <meta name="robots" content="index, follow">
+  <!-- Add this to your <head> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5271267160979118" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HL8K2BJMDD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HL8K2BJMDD');
+  </script>   
+</head>
+<body>
+  <div id="animated-bg-container">
+    <img src="animated-bg.gif" id="animated-bg" alt="Animated background">
+  </div>
+
+  <div id="forest-background"></div>
+  <div id="moving-animals">
+    <img src="ostrich.gif" class="animal ostrich" alt="Ostrich">
+    <img src="bird.gif" class="animal bird" alt="Bird">
+    <img src="elephant.gif" class="animal elephant" alt="Elephant">
+    <img src="cheetah.gif" class="animal cheetah" alt="Cheetah" style="display: none;">
+    <img src="horse.gif" class="animal horse" alt="Horse" style="display: none;">
+  </div>
+
+  <div id="aquatic-background"></div>
+  <div id="moving-fish">
+    <img src="fish1.gif" class="fish fish1" alt="Fish">
+    <img src="fish2.gif" class="fish fish2" alt="Fish">
+    <img src="fish3.gif" class="fish fish3" alt="Fish">
+  </div>
+  <div id="difficult-background"></div>
+
+  <header>
+    <nav>
+      <a href="#" id="how-to-play">How to Play</a>
+      <a href="#" id="leaderboard-button">Leaderboard</a>
+      <a href="#" id="achievements-button">Achievements</a>
+      <a href="#" id="about-button">About Us</a>
+      <a href="#" id="disclaimer-button">Disclaimer</a>
+    </nav>
+  </header>
+
+  <button id="mobile-menu-button">☰</button>
+  <div id="mobile-menu">
+    <a href="#" id="mobile-how-to-play">How to Play</a>
+    <a href="#" id="mobile-leaderboard-button">Leaderboard</a>
+    <a href="#" id="mobile-achievements-button">Achievements</a>
+    <a href="#" id="mobile-about-button">About Us</a>
+    <a href="#" id="mobile-disclaimer-button">Disclaimer</a>
+  </div>
+
+  <div id="score-board">Score: 0</div>
+  <div id="wrong-pops-board">Wrong Pops: 0/5</div>
+  <div id="combo-counter" style="display: none;">Combo: 0x</div>
+  <div id="timer" style="display: none;">Time: 60s</div>
+
+  <div id="game-container">
+    <div id="start-screen">
+      <h1>Balloon Pop Adventure</h1>
+      <div class="input-container">
+        <input type="text" id="player-name" placeholder="Enter your name" required>
+        <button id="back-to-start" class="back-btn" style="display: none;">Back</button>
+        <button id="new-game" class="pulse">Start Game</button>
+      </div>
+      <div class="game-mode-selector">
+        <button id="classic-mode" class="mode-btn active">Classic</button>
+        <button id="timed-mode" class="mode-btn">Timed</button>
+      </div>
+    </div>
+
+    <div id="theme-screen" style="display: none;">
+      <h2>Select Your Theme</h2>
+      <div class="theme-options">
+        <button id="forest-theme" class="theme-btn pulse">🌲 Forest Theme</button>
+        <button id="aquatic-theme" class="theme-btn pulse">🐠 Aquatic Theme</button>
+        <button id="difficult-theme" class="theme-btn pulse">🔥 Difficult Theme</button>    
+        <button id="back-to-theme" class="back-btn">← Back</button>
+      </div>
+    </div>
+
+    <div id="category-screen" style="display: none;">
+      <h2>Select Category</h2>
+      <div class="category-options">
+        <button id="letters-button" class="category-btn pulse">Letters</button>
+        <button id="numbers-button" class="category-btn pulse">Numbers</button>
+        <button id="shapes-button" class="category-btn pulse">Shapes</button>
+        <button id="all-button" class="category-btn pulse">All</button>
+        <button id="back-to-category" class="back-btn">← Back</button>
+      </div>
+    </div>
+
+    <div id="game-screen" style="display: none;">
+      <div id="game-over">
+        <h2>GAME OVER!</h2>
+        <p>Your Score is <span id="final-score">0</span>!</p>
+        <div id="achievements-unlocked"></div>
+        <button id="restart-game" class="pulse">Play Again</button>
+      </div>
+      <div id="pause-popup">
+        <h2>Game Paused</h2>
+        <button id="resume-button" class="pulse">▶ Resume</button>
+      </div>
+      <div id="bottom-line"></div>
+      <p id="shapes-hint">Pop the shapes!</p>
+      <p id="all-hint">Pop everything!</p>
+      <p id="letters-hint">Pop letters only!</p>
+      <p id="numbers-hint">Pop numbers only!</p>
+    </div>
+  </div>
+
+  <div id="leaderboard-popup" class="popup">
+    <h2>Leaderboard</h2>
+    <ol id="leaderboard-list"></ol>
+    <button id="close-leaderboard" class="pulse">Close</button>
+  </div>
+
+  <div id="achievements-popup" class="popup">
+    <h2>Your Achievements</h2>
+    <div id="achievements-list"></div>
+    <button id="close-achievements" class="pulse">Close</button>
+  </div>
+
+  <div id="about-popup" class="popup">
+    <h2>About Us</h2>
+    <p>Welcome to Balloon Pop Adventure! A fun, educational game designed to help kids learn while having fun popping balloons.</p>
+    <button id="close-about" class="pulse">Close</button>
+  </div>
+
+  <div id="disclaimer-popup" class="popup">
+    <h2>Disclaimer</h2>
+    <p>This game is for entertainment purposes only.</p>
+    <button id="close-disclaimer" class="pulse">Close</button>
+  </div>
+
+  <div id="how-to-play-popup" class="popup">
+    <h2>How to Play</h2>
+    <div class="tutorial-content">
+      <p><strong>Classic Mode:</strong> Pop as many balloons as you can!</p>
+      <p><strong>Timed Mode:</strong> Pop balloons before time runs out!</p>
+      <div class="balloon-types">
+        <div class="balloon-desc"><span class="balloon-example normal">A</span> Normal: +1 point</div>
+        <div class="balloon-desc"><span class="balloon-example rainbow">★</span> Rainbow: +5 points</div>
+        <div class="balloon-desc"><span class="balloon-example multiplier">2x</span> Multiplier: 2x points for 10s</div>
+        <div class="balloon-desc"><span class="balloon-example bomb">💣</span> Bomb: -5 points</div>
+      </div>
+    </div>
+    <button id="close-how-to-play" class="pulse">Got It!</button>
+  </div>
+
+  <div id="level-up-popup">
+    <h2>Level Up!</h2>
+    <p>You've reached Level <span id="current-level">1</span>!</p>
+  </div>
+
+  <div id="combo-popup" class="floating-popup">
+    <span id="combo-text">Combo!</span>
+    <span id="combo-count">0x</span>
+  </div>
+
+  <button id="sound-toggle" class="control-btn">Sound: On</button>
+  <button id="pause-button" class="control-btn">⏸ Pause</button>
+
+  <audio id="background-music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="pop-sound">
+    <source src="pop.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="combo-sound">
+    <source src="combo.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="bomb-sound">
+    <source src="bomb.mp3" type="audio/mpeg">
+  </audio>
+
+<!--<div id="affiliate-banner">
+    <span id="close-affiliate" class="close-btn">&times;</span>
+    <div class="affiliate-item">
+      <a href="https://amzn.to/427rqJA" target="_blank" rel="noopener noreferrer">
+        <img src="toddler-toys.jpg" alt="Toddler Toys" class="product-image"> 
+        <button class="pulse">Buy Now</button>
+      </a>
+    </div>
+    <div class="affiliate-item">
+      <a href="https://amzn.to/41Nntuu" target="_blank" rel="noopener noreferrer">
+        <img src="samsung.jpg" alt="Samsung Washing Machine" class="product-image">
+        <button class="pulse">Buy Now</button>
+      </a>
+    </div>
+  </div>
+-->
+
+  <script src="script.js"></script>
+</body>
+</html>
